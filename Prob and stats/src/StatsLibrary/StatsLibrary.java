@@ -43,4 +43,13 @@ public class StatsLibrary {
 		}
 		return largestElement;
 	}
+	
+	public static Double stdev(ArrayList<Integer> inputList) {
+		int mean = mean(inputList);
+		double sum = 0;
+		for (int i = 0; i < inputList.size(); i++) {
+			sum+=(Math.pow(inputList.get(i)-mean, 2));
+		}
+		return Math.sqrt(sum/(inputList.size()-1));
+	}
 }

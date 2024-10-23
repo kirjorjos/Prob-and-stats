@@ -18,5 +18,6 @@ public class StatsLibraryTester {
 		System.out.printf("Mean: %d%n", StatsLibrary.mean(intList));
 		System.out.printf("Median: %d%n", StatsLibrary.median(intList));
 		System.out.printf("Mode: %d%n", StatsLibrary.mode(intList));
+		System.out.printf("Stdev: %.2f%n", StatsLibrary.stdev(intList));
 	}
 }
