@@ -7,21 +7,16 @@ public class StatsLibraryTester {
 
 	public static void main(String args[]) {
 		Random rand = new Random();
-		ArrayList<Double> doubleList = new ArrayList<>();
 		ArrayList<Integer> intList = new ArrayList<>();
 
-		for (int i = 0; i < 10; i++) {
-			doubleList.set(i, rand.nextDouble());
-		}
-
-		for (double element : doubleList) {
-			intList.add((int)element);
+		for (int i = 0; i < 1000; i++) {
+			intList.add(rand.nextInt(1000));
 		}
 
 		System.out.print("List: ");
-		System.out.println(doubleList);
-		System.out.printf("Mean: %.2f%n", StatsLibrary.mean(doubleList));
-//		System.out.printf("Median: %.2f%n", median(doubleList));
-//		System.out.printf("Mode: %.2f%n", mode(intList));
+		System.out.println(intList);
+		System.out.printf("Mean: %d%n", StatsLibrary.mean(intList));
+		System.out.printf("Median: %d%n", StatsLibrary.median(intList));
+		System.out.printf("Mode: %d%n", StatsLibrary.mode(intList));
 	}
 }
