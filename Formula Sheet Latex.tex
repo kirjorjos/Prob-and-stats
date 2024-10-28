@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Definitions and Theorems}
+Mean of a sample with \( n \) values:
+\[
+\bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_i
+\]
+Variance of a sample (overall distance of values from the mean):
+\[
+s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (y_i - \bar{y})^2
+\]
+Standard Deviation (\( s \)): square root of variance \( s^2 \):
+\[
+s = \sqrt{s^2}
+\]
+Probability of an event \( A \) within a sample space \( S \), such that \( A \subseteq S \):
+\begin{itemize}
+    \item \( P(A) \geq 0 \)
+    \item \( P(S) = 1 \)
+    \item If \( A_1, A_2, \dots, A_n \) are mutually exclusive:
+    \[
+    P(A_1, A_2, \dots, A_n) = \sum_{i=1}^{n} P(A_i)
+    \]
+\end{itemize}
+Permutation (ordered arrangement of \( r \) distinct objects, with \( n \) possible orders):
+\[
+P^r_n = \frac{n!}{(n - r)!}
+\]
+Combination (number of subsets of size \( r \) that can be formed from \( n \) objects):
+\[
+C^r_n = \frac{n!}{r! (n - r)!}
+\]
+
+Conditional probability (chance that event \( A \) has occurred, given event \( B \) has occurred):
+\[
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+\]
+Independence: All 3 of these must be true:
+Dependence: Any one of these 3 must be false:
+\begin{itemize}
+    \item \( P(A|B) = P(A) \)
+    \item \( P(B|A) = P(B) \)
+    \item \( P(A \cap B) = P(A) P(B) \)
+\end{itemize}
+
+Multiplicative Law of Probability (The probability of the intersection of two events):
+\begin{itemize}
+    \item If dependent, \( P(A \cap B) = P(A) P(B|A) = P(B) P(A|B) \)
+    \item If independent, \( P(A \cap B) = P(A) P(B) \)
+\end{itemize}
+
+Additive Law of Probability (The probability of the union of two events):
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+If \( P(A \cap B) = 0 \):
+    - The event is mutually exclusive
+    - \( P(A \cup B) = P(A) + P(B) \)
+
+If \( A \) is an event, then \( P(A) = 1 - P(\bar{A}) \).
+
+For any positive integer \( k \), \( \{B_1, B_2, \dots, B_k\} \) is a partition of sample space \( S \) if:
+\begin{itemize}
+    \item \( S = B_1 \cup B_2 \cup \dots \cup B_k \)
+    \item \( B_i \cap B_j = \emptyset \) for all \( i \neq j \)
+\end{itemize}
+
+Total probability (assuming the above is true):
+\[
+P(A) = \sum_{i=1}^{k} P(A|B_i) P(B_i)
+\]
+
+\subsection*{Bayes’ Theorem}
+For events \( A \) and \( B \) in the space \( S \) where \( P(A) > 0 \) and \( P(B) > 0 \):
+\[
+P(B|A) = \frac{P(A|B) P(B)}{P(A)}
+\]
+
+Probability distribution for each value \( y \) of random variable \( Y \), given \( 0 \leq P(y) \leq 1 \):
+\[
+p(y) = P(Y = y)
+\]
+
+Expected value of discrete random variable \( Y \):
+\[
+\mu = E(Y) = \sum_{Y=y} y p(y)
+\]
+
+Variance of discrete random variable \( Y \):
+\[
+\sigma^2 = V(Y) = E(Y - \mu)^2
+\]
+Standard deviation of discrete random variable \( Y \):
+\[
+\sigma = \sqrt{E(Y - \mu)^2}
+\]
+
+\subsection*{Binomial Distribution}
+Probability Mass Function for binomial variable \( y \) with \( n \) trials, success probability \( p \), and failure probability \( q \):
+\[
+p(y) = P(Y = y) = \binom{n}{y} p^y q^{n-y}
+\]
+
+Expected value of binomial random variable \( Y \):
+\[
+\mu = E(Y) = np
+\]
+Binomial variance of \( Y \):
+\[
+\sigma^2 = V(Y) = npq
+\]
+Binomial standard deviation of \( Y \):
+\[
+\sigma = \sqrt{npq}
+\]
+\subsection{Geometric probability distribution mass function}
+- with success probability \( p \) and failure probability \( q \):
+\[
+p(y) = q^{y-1} p
+\]
+
+- Expected value of geometric random variable \( Y \):
+\[
+\mu = E(Y) = \frac{1}{p}
+\]
+
+- Geometric variance of \( Y \):
+\[
+\sigma^2 = V(Y) = \frac{1 - p}{p^2}
+\]
+
+- Geometric standard deviation of \( Y \):
+\[
+\sigma = \sqrt{\frac{1 - p}{p^2}}
+\]
+
+
+\end{document}
