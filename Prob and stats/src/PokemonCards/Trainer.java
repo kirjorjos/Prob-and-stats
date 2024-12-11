@@ -9,9 +9,8 @@ public class Trainer extends Card {
 	}
 	
 	public Trainer(int health) {
-		this.setHealth(health);
+		this.health = health;
 	}
-
 
 
 	public int getHealth() {

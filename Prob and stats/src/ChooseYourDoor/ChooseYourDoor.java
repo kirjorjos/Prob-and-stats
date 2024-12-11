@@ -33,3 +33,8 @@ public class ChooseYourDoor {
 		return doors[doorToPick];
 	}
 }
+/**
+ * Questions A and B
+ * A: Every door has a 33.33% chance so there is a 33.33% chance he will pick the right door given 1 random pick.
+ * B: 
+ */

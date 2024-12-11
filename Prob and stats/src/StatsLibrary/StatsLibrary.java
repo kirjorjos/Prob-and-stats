@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import SetOperations.SetOperations;
+
 public class StatsLibrary {
 	/**
 	 * A method to find the mean of an ArrayList
@@ -61,21 +63,30 @@ public class StatsLibrary {
 	}
 	
 	/**
+	 * A method to find the variance of a list
+	 * @param inputList The list to find the variance of
+	 * @return The variance of the list
+	 */
+	public static Double variance(ArrayList<Integer> inputList) {
+		double sum = 0;
+		int mean = mean(inputList);
+		for (int i = 0; i < inputList.size(); i++) {
+			sum+=Math.pow(inputList.get(i)-mean, 2);
+		}
+		return (sum/(inputList.size()-1));
+	}
+	
+	/**
 	 * A method to find the Standard Deviation of a list
 	 * @param inputList The list to find the Standard Deviation of
 	 * @return The Standard Deviation of the list
 	 */
 	public static Double stdev(ArrayList<Integer> inputList) {
-		int mean = mean(inputList);
-		double sum = 0;
-		for (int i = 0; i < inputList.size(); i++) {
-			sum+=(Math.pow(inputList.get(i)-mean, 2));
-		}
-		return Math.sqrt(sum/(inputList.size()-1));
+		return Math.sqrt(variance(inputList));
 	}
 	
 	/**
-	 * Find the factorial of a number
+	 * A method to find the factorial of a number
 	 * @param num The number to find the factorial of
 	 * @return The factorial of the input number
 	 */
@@ -85,5 +96,63 @@ public class StatsLibrary {
 			factorial = factorial.multiply(new BigInteger(i.toString()));
 		}
 		return factorial;
+	}
+	
+	/**
+	 * A method to find number of arrangements of r objects with n orders
+	 * @param r The number of objects
+	 * @param n The number of orders
+	 * @return The permutation of r and n
+	 */
+	public static BigInteger permutation(int r, int n) {
+		BigInteger numerator = factorial(n);
+		BigInteger denominator = factorial(n-r);
+		return numerator.divide(denominator);
+	}
+	
+	/**
+	 * A method to find the combination of 2 numbers
+	 * @param r The size of the subsets
+	 * @param n The number of objects
+	 * @return r choose n
+	 */
+	public static BigInteger combination(int r, int n) {
+		return permutation(r, n).divide(factorial(r));
+	}
+	
+	public static <E> double pOfAIntersectB(ArrayList<E> a, ArrayList<E> b, int sampleSpaceSize) {
+		return SetOperations.intersect(a, b).size()/sampleSpaceSize;
+	}
+	
+	public static <E> double pOfAGivenB(double pOfAIntersectB, double pOfB) {
+		return pOfAIntersectB/pOfB;
+	}
+	
+	public static <E> boolean independent(double pOfA, double pOfB, double pOfAGivenB, double pOfBGivenA, double pOfAIntersectB) {
+		if (pOfAGivenB != pOfA) return false;
+		if (pOfBGivenA != pOfB) return false;
+		if (pOfAIntersectB != pOfA*pOfB) return false;
+		return true;
+	}
+	
+	public static <E> double pOfAUnionB(double pOfAIntersectB, double pOfA, double pOfB) {
+		return pOfA+pOfB-pOfAIntersectB;
+	}
+	
+	public static double inverse(double pOfA) {
+		return 1-pOfA;
+	}
+	
+	public static double bayesTheorem(double pOfAGivenB, double pOfB, double pOfA) {
+		if (pOfA == 0 || pOfB == 0) throw new Error("Probability is zero");
+		return (pOfAGivenB*pOfB)/pOfA;
+	}
+	
+	public static Double probabilityExpectedValue(int n, double p, double q) {
+		double sum = 0;
+		for (int y = 0; y < n; y++) {
+			sum+=y*Math.pow(p, y)*Math.pow(q, n-y)*(combination(n, y).doubleValue());
+		}
+		return sum;
 	}
 }

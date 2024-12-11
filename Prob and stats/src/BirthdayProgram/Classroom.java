@@ -2,14 +2,14 @@ package BirthdayProgram;
 
 import java.util.ArrayList;
 
-public class Class {
+public class Classroom {
 	private ArrayList<Person> students;
 	
 	/**
 	 * A class that has students in it
 	 * @param students
 	 */
-	public Class(ArrayList<Person> students) {
+	public Classroom(ArrayList<Person> students) {
 		this.setStudents(students);
 	}
 
